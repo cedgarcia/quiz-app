@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>Quiz App</title>
+</head>
+<body>
+  <div class="app">
+    <div class="container">
+
+      <div class="question-wrapper">
+        <h1 class="question">Which Harry Potter word is now in the Oxford English Dictionary?</h1>
+        <div class="progress-wrapper">
+          <label for="progress" class="progress-label">1/100</label>
+          <progress  id="progress" class="progress-bar" value="5" max="100"></progress> 
+          <p>Pick an option below</p>    
+  
+        </div>
+      </div>
+
+      <div class="choices-wrapper">
+        <ul class="choices">
+          
+          <li class="choice">  
+            <input type="radio" name="choice" class="choice-radio" id="choice0">
+            <label for="choice0" class="choice-label">
+              <i></i>
+              Hogwarts
+            </label>
+          </li> 
+
+
+          <li class="choice">  
+            <input type="radio" name="choice" class="choice-radio" id="choice1">
+            <label for="choice1" class="choice-label">
+              <i></i>
+              Voldemort
+            </label>
+          </li>
+          
+          <li class="choice">  
+            <input type="radio" name="choice" class="choice-radio" id="choice2">
+            <label for="choice2" class="choice-label">
+              <i></i>
+              Muggle
+            </label>
+          </li> 
+
+          <li class="choice">  
+            <input type="radio" name="choice" class="choice-radio" id="choice3">
+            <label for="choice3" class="choice-label">
+              <i></i>
+              Winguardian Levioso
+            </label>
+          </li> 
+        </ul>
+      </div>
+
+
+      <div class="buttons">
+        <button class="button next">next</button>
+        <button class="button restart">restart</button>
+      </div>
+
+
+
+    </div> <!--Container-->
+  </div>
+</body>
+</html>
