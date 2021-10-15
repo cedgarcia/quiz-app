@@ -4,6 +4,7 @@ import Quiz from './quiz.js'
 const App = (function() {
   const quizQuestion = document.querySelector('.question')
   const tracker = document.querySelector('.progress-bar')
+  const progressLabel = document.querySelector('.progress-label')
   const quizChoices = document.querySelector('.choices')
   const nextButton = document.querySelector('.next')
   const restartButton = document.querySelector('.restart')
@@ -38,26 +39,67 @@ const App = (function() {
   console.log(quiz)
 
 
+
+
+
+
+
+
+
+
   // Render To DOM
+    const renderProgress = ()=> {
+      const index = quiz.currentIndex
+      console.log(index)
+     progressLabel.innerHTML = `${index+1}  of ${quiz.questions.length}`
+    }
+    //progress bar
+    const render renderTracker = () => {
+      
+    }  
 
   const setQuestion = (elem, value) => {
     elem.innerHTML = value
   }
-  const renderQuestion = (()=> {
+
+  const renderQuestion = ()=> {
     const question = quiz.getCurrentQuestion().question;
     console.log(question)
     setQuestion(quizQuestion, question)
 
-  })()
+  }
+
+  const renderChoices = ()=> {
+    let markup = ""
+    const currentChoices = quiz.getCurrentQuestion().choices;
+    currentChoices.forEach((elem, index) => {
+      markup +=`
+    
+      <li class="choice">  
+      <input type="radio" name="choice" class="choice-radio" id="choice0${index}">
+      <label for="choice0${index}" class="choice-label">
+        <i></i>
+        <span>${elem}</span>
+      </label>
+    </li> 
+      
+      `
+      console.log(elem, index)
+    })
+    quizChoices.innerHTML = markup
+  }
 
   const render = ()=> {
     if (quiz.quizEndend()) {
 
     }
     else {
+        renderQuestion()
+        renderChoices()
+        renderProgress()
 
     }
   }
-
+  render()
 
 })()
