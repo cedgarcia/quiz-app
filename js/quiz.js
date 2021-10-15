@@ -3,7 +3,7 @@ export default function Quiz(questions) {
   this.score = 0
   this.currentIndex = 0 //item
 }
-
+// METHODS
 Quiz.prototype.getCurrentQuestion = function() { // Next Question
   return this.questions[this.currentIndex]
 }
