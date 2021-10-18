@@ -35,6 +35,9 @@ const App = (function() {
     ["Moaning Myrtle","Nearly Headless Nick","Fawkes","Ginny Weasley"],
     0
   )
+
+
+
   const quiz = new Quiz([q1,q2,q3,q4,q5])
   console.log(quiz)
 
@@ -54,7 +57,7 @@ const App = (function() {
      progressLabel.innerHTML = `${index+1}  of ${quiz.questions.length}`
     }
     //progress bar
-    const render renderTracker = () => {
+    const renderTracker = () => {
       
     }  
 
@@ -76,7 +79,7 @@ const App = (function() {
       markup +=`
     
       <li class="choice">  
-      <input type="radio" name="choice" class="choice-radio" id="choice0${index}">
+      <input type="radio" name="choice" data-order = "${index}" class="choice-radio" id="choice0${index}">
       <label for="choice0${index}" class="choice-label">
         <i></i>
         <span>${elem}</span>
@@ -89,9 +92,35 @@ const App = (function() {
     quizChoices.innerHTML = markup
   }
 
-  const render = ()=> {
-    if (quiz.quizEndend()) {
+  const listeners = ()=> {
+    nextButton.addEventListener('click', function() {
+      const selectedRadio = document.querySelector('input[name="choice"]:checked')
+      if(selectedRadio) {
+        const key = Number(selectedRadio.getAttribute('data-order'))
+        console.log(key)
+        quiz.guess(key)
+        render()
+      }
+    })
+    // restartButton.addEventListener('click', function() {
+    //   console.log('restart')
+    //   quiz.reset()
+    //   render()
+    //   nextButton.style.opacity = 1
+    // })
+  }
+// listeners()
 
+const getPercentage = (num1, num2) => {
+  return Math.round((num1/num2) * 100);
+}  
+
+
+  const render = ()=> {
+    if (quiz.quizEnded()) {
+      quizQuestion.innerHTML = 'Great Job'
+      progressLabel.innerHTML = `Your Score: ${getPercentage(quiz.score, quiz.questions.length)}%` 
+      nextButton.style.opacity = 0
     }
     else {
         renderQuestion()
@@ -100,6 +129,11 @@ const App = (function() {
 
     }
   }
-  render()
+  return {
+    render:render,
+    listeners:listeners
+  }
 
 })()
+App.render()
+App.listeners()

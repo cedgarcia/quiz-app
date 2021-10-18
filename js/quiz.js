@@ -12,7 +12,7 @@ Quiz.prototype.nextIndex = function() {
   this.currentIndex++
 }
 
-Quiz.prototype.quizEndend = function() {
+Quiz.prototype.quizEnded = function() {
   return this.currentIndex === this.questions.length
 }
 
@@ -22,5 +22,10 @@ Quiz.prototype.guess = function(userGuess) {
   if (currentQuestion.isCorrect(userGuess)) {
     this.score++
   }
-  this.nextIndex
+  this.nextIndex()
+}
+
+Quiz.prototype.reset = function() {
+  this.score = 0
+  this.currentIndex = 0
 }
